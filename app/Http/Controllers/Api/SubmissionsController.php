@@ -26,10 +26,10 @@ class SubmissionsController extends Controller
         $result = $this->createSubmission->execute($request);
 
         if ($result instanceof PendingDispatch) {
-            return response()->json('Submission creation was scheduled successfully');
+            return response()->json(['message' => 'Submission creation was scheduled successfully']);
         }
 
-        return response()->json('Error, something went wrong', 500);
+        return response()->json(['message' => 'Error, something went wrong'], 500);
     }
 
     /**

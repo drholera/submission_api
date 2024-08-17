@@ -25,7 +25,7 @@ class Handler extends ExceptionHandler
     public function register(): void
     {
         $this->reportable(function (InvalidSubmissionArgumentException $e) {
-            return response()->json($e->getMessage(), 400);
+            return response()->json(['message' => $e->getMessage()], $e->getStatusCode());
         })->stop();
 
         $this->reportable(function(JobHandlingException $e) {
