@@ -29,7 +29,7 @@ class SubmissionsController extends Controller
             return response()->json('Submission creation was scheduled successfully');
         }
 
-        return response()->json('Error', 500);
+        return response()->json('Error, something went wrong', 500);
     }
 
     /**
@@ -48,7 +48,7 @@ class SubmissionsController extends Controller
             throw new InvalidSubmissionArgumentException(400, $th->getMessage());
         }
 
-        return  new CreateSubmissionRequest(
+        return new CreateSubmissionRequest(
             $httpRequest->get('name'),
             $httpRequest->get('email'),
             $httpRequest->get('message')
